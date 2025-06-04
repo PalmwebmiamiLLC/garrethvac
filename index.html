@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garret HVAC - Professional Heating & Cooling Services</title>
+    <title>Perfect Degrees Air Conditioning - Professional Heating & Cooling Services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,13 +27,140 @@
             --transition: all 0.3s ease;
         }
 
-        /* General HTML Styles (unchanged) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Glassmorphism & Neumorphism Styles */
+        .glassmorphism {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 var(--glass-shadow);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .glassmorphism:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px 0 var(--glass-shadow);
+        }
+
+        .neumorphic {
+            background: var(--neu-bg);
+            border-radius: 15px;
+            box-shadow: 8px 8px 16px var(--neu-shadow-dark), 
+                        -8px -8px 16px var(--neu-shadow-light);
+            transition: var(--transition);
+        }
+
+        .neumorphic:hover {
+            box-shadow: 6px 6px 12px var(--neu-shadow-dark), 
+                        -6px -6px 12px var(--neu-shadow-light);
+        }
+
+        /* Buttons */
+        .cta-btn, .submit-btn, .estimate-btn, .subscribe-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn:hover, .submit-btn:hover, .estimate-btn:hover, .subscribe-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .call-btn {
+            background: var(--accent-color);
+            color: var(--light-text);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .call-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         /* Navigation */
@@ -155,27 +282,214 @@
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        <section id="home" class="hero">
-            <div class="hero-background">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Professional HVAC Services</h1>
-                        <p>Expert heating, ventilation, and air conditioning repair services for your home and business. Available 24/7 for emergency repairs.</p>
-                        <a href="#contact" class="cta-btn">Get Free Estimate</a>
-                    </div>
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            border-radius: 15px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            text-align: left;
+        }
+
+        .about-text h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .service-card h3 {
+            padding: 1.5rem 1.5rem 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: var(--light-text);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer h3 {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links ul li,
+        .footer-services ul li,
+        .footer-contact ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links ul li a,
+        .footer-services ul li a {
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover,
+        .footer-services ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact ul li {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-contact ul li i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            margin-top: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Perfect Degrees Air Conditioning</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#estimator">Estimator</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:+1234567890" class="call-btn">Call Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Professional HVAC Services</h1>
+                    <p>Expert heating, ventilation, and air conditioning repair services for your home and business. Available 24/7 for emergency repairs.</p>
+                    <a href="#contact" class="cta-btn">Get Free Estimate</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Updated Content in the Hero Section -->
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
             <div class="about-content">
                 <div class="about-image glassmorphism">
                     <img src="https://public.youware.com/users-website-assets/prod/a6c647fa-9b21-4604-ba29-00922be25956/hvac-technician-servicing-an-air-conditioning-unit-free-photo.jpg" alt="HVAC Technician" />
                 </div>
                 <div class="about-text">
-                    <h2>About Garret HVAC</h2>
-                    <p>With over 15 years of experience, Garret HVAC is your trusted partner for all heating, ventilation, and air conditioning needs. Our certified technicians provide reliable, efficient solutions to keep your home comfortable year-round.</p>
+                    <h2>About Perfect Degrees Air Conditioning</h2>
+                    <p>With over 15 years of experience, Perfect Degrees Air Conditioning is your trusted partner for all heating, ventilation, and air conditioning needs. Our certified technicians provide reliable, efficient solutions to keep your home comfortable year-round.</p>
                     <div class="about-features">
                         <div class="feature neumorphic">
                             <i class="fas fa-tools"></i>
@@ -194,6 +508,28 @@
                 </div>
             </div>
         </div>
-    </section>    
-</body>
-</html>
+    </section> 
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card glassmorphism">
+                    <img src="https://public.youware.com/users-website-assets/prod/a6c647fa-9b21-4604-ba29-00922be25956/air-conditioner-6605973_1280.jpg" alt="Air Conditioning Repair">
+                    <h3>Air Conditioning Repair</h3>
+                    <p>Expert AC repair and maintenance services to keep your home cool and comfortable during hot summer months.</p>
+                </div>
+                <div class="service-card glassmorphism">
+                    <img src="https://public.youware.com/users-website-assets/prod/a6c647fa-9b21-4604-ba29-00922be25956/condenser-unit-6605975_1280.jpg" alt="Heating System Repair">
+                    <h3>Heating System Repair</h3>
+                    <p>Professional heating system repair and installation for furnaces, heat pumps, and boiler systems.</p>
+                </div>
+                <div class="service-card glassmorphism">
+                    <img src="https://public.youware.com/users-website-assets/prod/a6c647fa-9b21-4604-ba29-00922be25956/plumbing-840835_1280.jpg" alt="Duct Cleaning">
+                    <h3>Duct Cleaning</h3>
+                    <p>Professional ductwork cleaning and repair services to improve air quality and system efficiency.</p>
+                </div>
+                <div class="service-card glassmorphism">
+                    <img src="https://public.youware.com/users-website-assets/prod/a6c647fa-9b21-4604-ba29-00922be25956/ga6e897bfedfca5b4b23bdb186a19a54186732d598acb228832ad3ab3b0771beb113d34f19e83c78f8e99fd7042485060ea197c8fe2fd92bca307a53266d8858d_1280.jpg" alt="Installation Services">
+                    <h3>Installation Services</h3>
+                    <p>
